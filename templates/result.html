@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Результат</title>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <img src="{{ url_for('static', filename=image) }}" alt="Result Image" class="img-fluid w-25 h-auto mt-4">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Назад</a>
+    </div>
+</body>
+
+</html>
